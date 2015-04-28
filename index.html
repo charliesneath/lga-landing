@@ -2,13 +2,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="jquery-ui.min.js"></script>
+    <script src="jquery-ui.min.js"></script
     <script src="jquery.ui.touch-punch.min.js"></script>
 </head>
 
 
 <script>
     $(function() {
+        $('.image-container').draggable({
+            containment: 'document'
+        });
+
         $('body').bind('mousemove', function(e) {
             // 18 photos in total. Segment the page into 18 columns for each one.
             var docWidth = $(document).width();
