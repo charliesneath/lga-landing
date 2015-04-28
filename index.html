@@ -9,15 +9,16 @@
 
 <script>
     $(function() {
-        $('body').draggable({
-            containment: 'document'
-        });
+        // $('.image-container').draggable({
+        //     containment: 'document'
+        // });
 
         $('body').bind('mousemove', function(e) {
             // 18 photos in total. Segment the page into 18 columns for each one.
             var docWidth = $(document).width();
             var img = $('.image-container img');
             var imgOffset = parseInt( (e.pageX/docWidth) * img.width()/docWidth ) * -100;
+            $('body').text(e.pageX);
             $('.image-container img').css('left', imgOffset + '%');
         })
     })
