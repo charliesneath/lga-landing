@@ -6,26 +6,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 
-<script>
-    $(function() {
-        $('body').draggable({
-            containment: 'document'
-        });
-
-        $('body').bind('mousemove', function(e) {
-            // 18 photos in total. Segment the page into 18 columns for each one.
-            var docWidth = $(document).width();
-            // var img = $('.image-container img');
-            var imgOffset = e.pageX/docWidth * 100;
-            $('#data').text(imgOffset);
-            $('#photo').css('background-position', imgOffset + '% 0');
-            $('#map').css('background-position', imgOffset + '% 0');
-        })
-    })
-</script>
-
 <style>
-    
     html, body {
         height: 100%;
     }
@@ -68,3 +49,21 @@
         <section id="map"></section>
     </container>
 </html>
+
+<script>
+    $(function() {
+        $('body').draggable({
+            containment: 'document'
+        });
+
+        $('body').bind('mousemove', function(e) {
+            // 18 photos in total. Segment the page into 18 columns for each one.
+            var docWidth = $(document).width();
+            // var img = $('.image-container img');
+            var imgOffset = e.pageX/docWidth * 100;
+            $('#data').text(imgOffset);
+            $('#photo').css('background-position', imgOffset + '% 0');
+            $('#map').css('background-position', imgOffset + '% 0');
+        })
+    })
+</script>
