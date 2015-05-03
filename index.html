@@ -1,9 +1,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="jquery-ui.min.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 
 <script>
@@ -15,25 +15,33 @@
         $('body').bind('mousemove', function(e) {
             // 18 photos in total. Segment the page into 18 columns for each one.
             var docWidth = $(document).width();
-            var img = $('.image-container img');
-            var imgOffset = parseInt( (e.pageX/docWidth) * img.width()/docWidth ) * -100;
-            $('.image-container img').css('left', imgOffset + '%');
+            // var img = $('.image-container img');
+            var imgOffset = e.pageX/docWidth * 100;
+            $('#data').text(imgOffset);
+            $('#photo').css('background-position', imgOffset + '% 0');
+            $('#map').css('background-position', imgOffset + '% 0');
         })
     })
 </script>
 
 <style>
-    .image-container {
-        width: 100%;
+    
+    html, body {
         height: 100%;
-        overflow: hidden;
-        position: relative;
     }
 
-    .image-container img {
-        position: absolute;
+    body {
+        margin: 0;
     }
 
+    container {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+
+    /*Enables touch input*/
     #cursor {
         position: absolute;
         width: 100%;
@@ -42,10 +50,21 @@
         z-index: 2;
     }
 
+    #photo {
+        flex: 1 100%;
+        background: url(photo.jpg);
+    }
+
+    #map {
+        flex: 1 100%;
+        background-image: url(map.jpg);
+    }
+
 </style>
 
 <html>
-    <div class="image-container">
-        <img src="landing.jpg">
-    </div>
+    <container>
+        <section id="photo"></section>
+        <section id="map"></section>
+    </container>
 </html>
